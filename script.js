@@ -1,36 +1,31 @@
-let display = document.getElementById('display');
-let darkModeToggle = document.getElementById('darkModeToggle');
+let currentInput = "";
 
-function appendNumber(number) {
-    display.value += number;
-}
-
-function appendOperator(operator) {
-    display.value += operator;
-}
-
-function appendDecimal(dot) {
-    if (!display.value.includes('.')) {
-        display.value += dot;
-    }
+function appendValue(value) {
+    if (value === '.' && currentInput.includes('.')) return; 
+    currentInput += value;
+    updateDisplay();
 }
 
 function clearDisplay() {
-    display.value = '';
+    currentInput = "";
+    updateDisplay();
 }
 
 function deleteLast() {
-    display.value = display.value.slice(0, -1);
+    currentInput = currentInput.slice(0, -1);
+    updateDisplay();
 }
 
 function calculateResult() {
     try {
-        display.value = eval(display.value);
+        currentInput = eval(currentInput).toString();
+        updateDisplay();
     } catch (e) {
-        display.value = 'Error';
+        currentInput = "Error";
+        updateDisplay();
     }
 }
 
-darkModeToggle.addEventListener('change', function() {
-    document.body.classList.toggle('dark-mode');
-});
+function updateDisplay() {
+    document.getElementById("result").innerText = currentInput || "0";
+}
