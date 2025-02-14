@@ -1,4 +1,6 @@
-Responsive Dark-Themed Calculator
+🔢 Responsive Dark-Themed Calculator
+
+---
 
 A modern, responsive, and stylish calculator built with HTML, CSS, and JavaScript. This project features a dark theme, smooth UI, and is optimized for all screen sizes.
 ---
